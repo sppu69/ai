@@ -65,7 +65,7 @@ def astar(maze, start, end):
 
             child.g = child.g +1 
             child.h = abs(child.position[0] - end_node.position[0]) + abs(child.position[1] - end_node.position[1])
-            child.f = child.g  + child.f 
+            child.f = child.g  + child.h 
 
             if child in open_list:
                 idx = open_list.index(child)
@@ -94,3 +94,38 @@ if path:
 
 else:
     print(f"Could not find path")
+
+"""
+A* SEARCH ALGORITHM THEORY:
+
+A* (pronounced "A-star") is a pathfinding algorithm that combines the advantages of 
+Dijkstra's algorithm and greedy best-first search. It uses a heuristic function to 
+guide the search process toward the goal while guaranteeing the optimality of the solution.
+
+Key components:
+1. f(n) = g(n) + h(n)
+   - g(n): The cost from the start node to the current node
+   - h(n): A heuristic that estimates the cost from the current node to the goal
+   - f(n): The total estimated cost from start to goal through the current node
+
+2. Heuristic Functions:
+   - Manhattan Distance (used in this implementation): |x1-x2| + |y1-y2|
+   - Euclidean Distance: sqrt((x1-x2)² + (y1-y2)²)
+   - Chebyshev Distance: max(|x1-x2|, |y1-y2|)
+
+3. Open List: Nodes discovered but not yet evaluated (frontier)
+4. Closed List: Nodes already evaluated
+
+Properties:
+- Complete: Will always find a solution if one exists
+- Optimal: Finds the least-cost path when using an admissible heuristic
+- Time Complexity: O(b^d) where b is the branching factor and d is the depth of the solution
+- Space Complexity: O(b^d) to store all nodes in memory
+
+Applications:
+- Pathfinding in video games
+- Robot navigation
+- Network routing
+- Puzzle solving (like the 8-puzzle, 15-puzzle)
+- Any problem that can be represented as a graph search problem
+"""

@@ -120,3 +120,53 @@ if __name__ == "__main__":
     
     print("\nRunning Prim's Algorithm:")
     g.prims_mst()
+
+"""
+MINIMUM SPANNING TREE (MST) ALGORITHMS THEORY:
+
+A Minimum Spanning Tree (MST) is a subset of the edges of a connected, edge-weighted undirected graph 
+that connects all the vertices together without any cycles and with the minimum possible total edge weight.
+
+1. KRUSKAL'S ALGORITHM:
+   Kruskal's algorithm builds the MST by adding edges in order of increasing weight, 
+   skipping edges that would create a cycle.
+   
+   Steps:
+   1. Sort all edges in non-decreasing order of weight
+   2. Pick the smallest edge that doesn't form a cycle with the MST formed so far
+   3. Repeat step 2 until there are (V-1) edges in the MST
+   
+   Key characteristics:
+   - Uses a disjoint-set data structure (Union-Find) to detect cycles
+   - Follows a greedy approach
+   - Time Complexity: O(E log E) or O(E log V) for sorting edges
+   - Space Complexity: O(E + V)
+
+2. PRIM'S ALGORITHM:
+   Prim's algorithm builds the MST by starting from a random vertex and 
+   greedily adding the lowest weight edge that connects a vertex in the tree 
+   to a vertex outside the tree.
+   
+   Steps:
+   1. Start with a single vertex
+   2. Add the minimum weight edge from tree vertices to non-tree vertices
+   3. Repeat until all vertices are included
+   
+   Key characteristics:
+   - Often implemented with a priority queue
+   - Follows a greedy approach
+   - Time Complexity: O(V²) with adjacency matrix, O(E log V) with binary heap
+   - Space Complexity: O(V)
+
+3. Comparison:
+   - Kruskal's works well for sparse graphs (fewer edges)
+   - Prim's works better for dense graphs (many edges)
+   - Both guarantee an optimal MST for undirected graphs
+
+4. Applications of MST:
+   - Network design (telephone, electrical, hydraulic, TV cable, computer, road)
+   - Approximation algorithms for NP-hard problems (Traveling Salesman Problem)
+   - Cluster analysis
+   - Image segmentation
+   - Handwriting recognition
+"""
