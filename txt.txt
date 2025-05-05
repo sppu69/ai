@@ -1,0 +1,33 @@
+host='http://localhost:5000'
+
+chmod 400 /path/to/your_azure_key.pem
+
+
+SSH into your Azure VM:
+
+
+ssh -i /path/to/your_azure_key.pem azureuser@your_public_ip
+
+Replace azureuser with your Azure VM username. - dsbda
+
+Replace your_public_ip with your Azure VM's IP address. - Public IP address
+68.154.68.34
+(
+Network interface
+dsbda819_z1
+)
+
+
+
+
+From your Ubuntu college PC, run this in a new terminal:
+
+
+ssh -L 5000:localhost:5000 -i /path/to/your_azure_key.pem azureuser@your_public_ip -N
+Explanation:
+
+Local port 5000 gets forwarded to port 5000 on the Azure server.
+
+This creates a secure tunnel from your PC → Azure VM → Internet (bypassing firewall).
+
+✔️ Leave this terminal open — it keeps the tunnel active.
